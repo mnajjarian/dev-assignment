@@ -1,5 +1,5 @@
 const fs = require('fs');
-const items = './status.real';
+const items = process.env.HOME + '/status.real' || './status.real';
 let str = fs.readFileSync(items, 'utf8');
 
 module.exports = {
