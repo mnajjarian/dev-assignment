@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require('path');
 const { str } = require("./utils");
 const app = express();
 
@@ -32,11 +33,22 @@ const sortPackage = getPackages().sort((a, b) =>
   a.Package.toUpperCase() < b.Package.toUpperCase() ? -1 : 1
 );
 
-app.get("/", (req, res) => {
+
+
+app.get("/api", (req, res) => {
   res.json(sortPackage);
 });
 
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'build')))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  })
+}
+
 const PORT = process.env.PORT || 3001;
+
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
 });

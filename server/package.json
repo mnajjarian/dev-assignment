@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "watch": "nodemon index.js"
   },
   "repository": "https://github.com/mnajjarian/dev-assignment.git",
   "author": "Mahdi Najjarian <mnajarian@gmail.com>",
