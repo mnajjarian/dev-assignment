@@ -1,3 +1,3 @@
 # dev-assignment
 
-[Demo] (https://dev-assignment.herokuapp.com/)
+[Demo](https://dev-assignment.herokuapp.com/).
