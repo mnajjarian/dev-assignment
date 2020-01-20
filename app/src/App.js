@@ -5,7 +5,7 @@ import axios from 'axios';
 import Package from './Package';
 import Detail from './Detail';
 
-const baseUrl = 'http://localhost:3001/'
+const baseUrl = '/api'
 
 const App = () => {
   const [state, setstate] = useState([])
