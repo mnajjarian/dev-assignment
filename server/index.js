@@ -1,42 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const path = require('path');
-const { str } = require("./utils");
+const { packages } = require("./utils");
 const app = express();
 
 app.use(cors());
 
-const strToArr = str.trim().split(/\n\n+/);
-
-const getPackages = () => {
-  let packs = [];
-  let arr = [];
-  let obj = {};
-
-  for (let i = 0; i < strToArr.length; i++) {
-    const pack = strToArr[i].replace(/\s{2,}/gi, " ").split(/\n/);
-    packs.push(pack);
-  }
-  for (let i = 0; i < packs.length; i++) {
-    for (let j = 0; j < packs[i].length; j++) {
-      obj[packs[i][j].split(": ")[0].replace("-", "")] = packs[i][j].split(
-        ": "
-      )[1];
-    }
-    arr.push(obj);
-    obj = {};
-  }
-  return arr;
-};
-
-const sortPackage = getPackages().sort((a, b) =>
-  a.Package.toUpperCase() < b.Package.toUpperCase() ? -1 : 1
-);
-
-
-
 app.get("/api", (req, res) => {
-  res.json(sortPackage);
+  res.json(packages);
 });
 
 if(process.env.NODE_ENV === 'production') {
