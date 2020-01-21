@@ -5,11 +5,10 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-//const history = useHistory();
 ReactDOM.render(
-    <Router  >
-      <App />
-    </Router>,
+  <Router>
+    <App />
+  </Router>,
   document.getElementById("root")
 );
 
